@@ -21,6 +21,8 @@ def get_all_astronauts():
 
 
 def location_of_iss(n):
+    '''fetches a longitude and latitude of the ISS and prints the location
+    and the names of the astronauts in the terminal'''
     loc = requests.get("http://api.open-notify.org/iss-now.json")
     loc_dict = json.loads(loc.text)
     current_loc = loc_dict["iss_position"]
@@ -32,6 +34,8 @@ def location_of_iss(n):
 
 # provided by Zach Kline
 def turtley_enough(iss_position, next_pass):
+    '''appends iss.gif to map.gif and prints when the dot and
+    iss will align'''
     new_screen = turtle.Screen()
     new_screen.bgpic('./map.gif')
     new_screen.addshape('iss.gif')
@@ -53,6 +57,7 @@ def turtley_enough(iss_position, next_pass):
 
 
 def over_indy():
+    '''Calculates when the ISS will align with Indianapolis'''
     r = requests.get("http://api.open-notify.org/iss-pass.json?lat=40&lon=-86.1349")
     dictionary = r.text
     dictionary = json.loads(dictionary)
